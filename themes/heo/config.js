@@ -4,18 +4,18 @@ const CONFIG = {
 
   HEO_HOME_BANNER_ENABLE: false, // 首页 banner（已关闭）
 
-  HEO_INFO_CARD_AVATAR_BLUR: true, // 文章详情页个人资料卡头像样式。true：显示为模糊装饰头像；false：与首页头像保持一致
+  HEO_INFO_CARD_AVATAR_BLUR: false, // 文章详情页个人资料卡头像样式。true：显示为模糊装饰头像；false：与首页头像保持一致
 
-  HEO_COLOR_PRIMARY: '#4f65f0',
-  HEO_COLOR_PRIMARY_HOVER: '#4f46e5',
+  HEO_COLOR_PRIMARY: '#1e3a8a',
+  HEO_COLOR_PRIMARY_HOVER: '#1e40af',
   HEO_COLOR_PRIMARY_TEXT: '#ffffff',
-  HEO_COLOR_ACCENT: '#dca846',
+  HEO_COLOR_ACCENT: '#06b6d4',
   HEO_COLOR_BG: '#f7f9fe',
   HEO_COLOR_BG_DARK: '#18171d',
   HEO_COLOR_CARD: '#ffffff',
   HEO_COLOR_CARD_DARK: '#1e1e1e',
   HEO_COLOR_CARD_MUTED: '#f1f3f8',
-  HEO_COLOR_BORDER: '#4f46e5',
+  HEO_COLOR_BORDER: '#1e40af',
   HEO_COLOR_BORDER_DARK: '#dca846',
   HEO_COLOR_TEXT: '#111827',
   HEO_COLOR_TEXT_SECONDARY: '#4b5563',
@@ -36,20 +36,20 @@ const CONFIG = {
   // 英雄区(首页顶部大卡)
   HEO_HERO_TITLE_1: '分享编程',
   HEO_HERO_TITLE_2: '与思维认知',
-  HEO_HERO_TITLE_3: 'TANGLY1024.COM',
+  HEO_HERO_TITLE_3: 'SKY12378',
   HEO_HERO_TITLE_4: '新版上线',
-  HEO_HERO_TITLE_5: 'NotionNext4.0 轻松定制主题',
-  HEO_HERO_TITLE_LINK: 'https://tangly1024.com',
+  HEO_HERO_TITLE_5: 'HPC 高性能计算分享',
+  HEO_HERO_TITLE_LINK: 'https://a.111103.xyz',
   // 英雄区遮罩文字
   HEO_HERO_COVER_TITLE: '随便逛逛',
 
   // 英雄区显示三个置顶分类
-  HEO_HERO_CATEGORY_1: { title: '必看精选', url: '/tag/必看精选' },
-  HEO_HERO_CATEGORY_2: { title: '热门文章', url: '/tag/热门文章' },
-  HEO_HERO_CATEGORY_3: { title: '实用教程', url: '/tag/实用教程' },
+  HEO_HERO_CATEGORY_1: { title: 'HPC 编译', url: '/tag/HPC' },
+  HEO_HERO_CATEGORY_2: { title: '系统运维', url: '/tag/运维' },
+  HEO_HERO_CATEGORY_3: { title: '软件安装', url: '/tag/编译' },
 
   // 英雄区右侧推荐文章标签, 例如 [推荐] , 最多六篇文章; 若留空白''，则推荐最近更新文章
-  HEO_HERO_RECOMMEND_POST_TAG: '推荐',
+  HEO_HERO_RECOMMEND_POST_TAG: 'HPC',
   HEO_HERO_RECOMMEND_POST_SORT_BY_UPDATE_TIME: false, // 推荐文章排序，为`true`时将强制按最后修改时间倒序
   //   HERO_RECOMMEND_COVER: 'https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712_1280.jpg', // 英雄区右侧图片
 
@@ -58,23 +58,23 @@ const CONFIG = {
 
   // 右侧个人资料卡牌欢迎语，点击可自动切换
   HEO_INFOCARD_GREETINGS: [
-    '你好！我是',
-    '🔍 分享与热心帮助',
-    '🤝 专修交互与设计',
-    '🏃 脚踏实地行动派',
-    '🏠 智能家居小能手',
-    '🤖️ 数码科技爱好者',
-    '🧱 团队小组发动机'
+    '👋 Hi, I\'m Adam Johnson',
+    '🖥️ HPC 高性能计算',
+    '⚙️ 软件编译与安装',
+    '🔧 集群运维实战',
+    '🐧 Linux 老玩家',
+    '🚀 折腾不止',
+    '📖 分享即学习'
   ],
 
   // 个人资料底部按钮
   HEO_INFO_CARD_URL1: '/about',
   HEO_INFO_CARD_ICON1: 'fas fa-user',
-  HEO_INFO_CARD_URL2: 'https://github.com/tangly1024',
+  HEO_INFO_CARD_URL2: 'https://github.com/sky12378',
   HEO_INFO_CARD_ICON2: 'fab fa-github',
   HEO_INFO_CARD_ICON_ORCID: 'fab fa-orcid',
-  HEO_INFO_CARD_URL3: 'https://www.tangly1024.com',
-  HEO_INFO_CARD_TEXT3: '了解更多',
+  HEO_INFO_CARD_URL3: 'https://a.111103.xyz',
+  HEO_INFO_CARD_TEXT3: '我的博客',
 
   // 用户技能图标
   HEO_GROUP_ICONS: [
