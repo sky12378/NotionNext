@@ -18,7 +18,7 @@ export default function Live2D() {
     if (showPet && !isMobile()) {
       Promise.all([
         loadExternalResource(
-          'https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/live2d.min.js',
+          '/live2d/live2d.min.js',
           'js'
         )
       ]).then(e => {
