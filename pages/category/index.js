@@ -17,7 +17,8 @@ export default function Category(props) {
 
 export async function getStaticProps({ locale }) {
   const props = await fetchGlobalAllData({ from: 'category-index-props', locale })
-  delete props.allPages
+  // 保留 allPages：分类首页需要按分类分组展示文章预览
+  // delete props.allPages
   return {
     props,
     revalidate: process.env.EXPORT

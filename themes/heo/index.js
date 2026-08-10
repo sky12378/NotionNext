@@ -421,38 +421,140 @@ const Layout404 = props => {
  * @returns
  */
 const LayoutCategoryIndex = props => {
-  const { categoryOptions } = props
+  const { categoryOptions, allPages, postCount } = props
   const { locale } = useGlobal()
+
+  // Notion 分类色 → 渐变样式映射
+  const categoryColorMap = {
+    pink: 'from-pink-500/20 to-rose-500/5 border-pink-500/30',
+    purple: 'from-purple-500/20 to-violet-500/5 border-purple-500/30',
+    brown: 'from-amber-500/20 to-orange-500/5 border-amber-500/30',
+    orange: 'from-orange-500/20 to-amber-500/5 border-orange-500/30',
+    yellow: 'from-yellow-500/20 to-amber-500/5 border-yellow-500/30',
+    green: 'from-emerald-500/20 to-teal-500/5 border-emerald-500/30',
+    blue: 'from-blue-500/20 to-indigo-500/5 border-blue-500/30',
+    red: 'from-red-500/20 to-rose-500/5 border-red-500/30',
+    gray: 'from-gray-500/20 to-slate-500/5 border-gray-500/30',
+    default: 'from-sky-500/20 to-indigo-500/5 border-sky-500/30'
+  }
+
+  // 按分类分组文章（保留分类对象上的 color/count）
+  const categoryWithPosts = (categoryOptions || []).map(category => {
+    const posts = (allPages || [])
+      .filter(p => p?.category === category.name && p?.type === 'Post')
+      .slice(0, 3)
+    return { ...category, posts }
+  })
+
+  const totalPosts = postCount ?? (allPages || []).filter(p => p?.type === 'Post').length
 
   return (
     <div id='category-outer-wrapper' className='mt-8 px-5 md:px-0'>
-      <div className='text-4xl font-extrabold dark:text-gray-200 mb-5'>
-        {locale.COMMON.CATEGORY}
+      {/* 标题 + 统计 */}
+      <div className='flex flex-col md:flex-row md:items-end md:justify-between mb-6'>
+        <div className='text-4xl font-extrabold dark:text-gray-200'>
+          {locale.COMMON.CATEGORY}
+        </div>
+        <div className='flex items-center gap-3 mt-3 md:mt-0 text-sm text-gray-500 dark:text-gray-400'>
+          <div className='flex items-center gap-1 bg-[var(--heo-color-card)] dark:bg-[var(--heo-color-card-dark)] px-3 py-1.5 rounded-full border border-[var(--heo-color-border)] dark:border-gray-800'>
+            <HashTag className={'w-4 h-4 stroke-gray-500'} />
+            <span className='font-bold text-[var(--heo-color-primary)]'>{categoryOptions?.length ?? 0}</span>
+            <span>{locale.COMMON.CATEGORY}</span>
+          </div>
+          <div className='flex items-center gap-1 bg-[var(--heo-color-card)] dark:bg-[var(--heo-color-card-dark)] px-3 py-1.5 rounded-full border border-[var(--heo-color-border)] dark:border-gray-800'>
+            <i className='fas fa-file-lines text-gray-500' />
+            <span className='font-bold text-[var(--heo-color-primary)]'>{totalPosts}</span>
+            <span>文章</span>
+          </div>
+        </div>
       </div>
-      <div
-        id='category-list'
-        className='duration-200 flex flex-wrap m-10 justify-center'>
-        {categoryOptions?.map(category => {
-          return (
-            <SmartLink
-              key={category.name}
-              href={`/category/${category.name}`}
-              passHref
-              legacyBehavior>
-              <div
-                className={
-                  'group mr-5 mb-5 flex flex-nowrap items-center border bg-[var(--heo-color-card)] text-2xl rounded-xl dark:hover:text-white px-4 cursor-pointer py-3 hover:text-[var(--heo-color-primary-text)] hover:bg-[var(--heo-color-primary)] transition-all hover:scale-110 duration-150'
-                }>
-                <HashTag className={'w-5 h-5 stroke-gray-500 stroke-2'} />
-                {category.name}
-                <div className='bg-[var(--heo-color-card-muted)] ml-1 px-2 rounded-lg group-hover:text-[var(--heo-color-primary)] '>
-                  {category.count}
+
+      {/* 分类卡片网格 */}
+      {categoryWithPosts.length > 0 ? (
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+          {categoryWithPosts.map(category => {
+            const colorCls = categoryColorMap[category.color] || categoryColorMap.default
+            return (
+              <SmartLink
+                key={category.name}
+                href={`/category/${category.name}`}
+                passHref
+                legacyBehavior>
+                <div
+                  className={
+                    'group relative overflow-hidden rounded-2xl border bg-gradient-to-br dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 p-5 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 ' +
+                    colorCls
+                  }>
+                  {/* 分类头部 */}
+                  <div className='flex items-center justify-between mb-4'>
+                    <div className='flex items-center gap-3'>
+                      <div
+                        className={
+                          'flex items-center justify-center w-11 h-11 rounded-xl text-white text-xl shadow-lg ' +
+                          'bg-gradient-to-br from-[var(--heo-color-primary)] to-[var(--heo-color-accent)]'
+                        }>
+                        <i className='fas fa-folder-open' />
+                      </div>
+                      <div>
+                        <div className='text-xl font-bold dark:text-white group-hover:text-[var(--heo-color-primary)] transition-colors'>
+                          {category.name}
+                        </div>
+                      </div>
+                    </div>
+                    <div className='flex items-center gap-1 bg-[var(--heo-color-card)] dark:bg-[var(--heo-color-card-dark)] px-3 py-1.5 rounded-full text-sm font-bold text-[var(--heo-color-primary)]'>
+                      <i className='fas fa-file-lines' />
+                      {category.count}
+                    </div>
+                  </div>
+
+                  {/* 最新文章预览 */}
+                  {category.posts?.length > 0 && (
+                    <div className='space-y-2.5'>
+                      {category.posts.map(post => (
+                        <div
+                          key={post.id}
+                          className='flex items-center gap-3 rounded-lg p-2 -mx-2 hover:bg-[var(--heo-color-card)] dark:hover:bg-[var(--heo-color-card-dark)] transition-colors'>
+                          {post.pageCoverThumbnail ? (
+                            <div className='w-14 h-10 shrink-0 overflow-hidden rounded-md'>
+                              <LazyImage
+                                src={post.pageCoverThumbnail}
+                                className='object-cover w-full h-full'
+                              />
+                            </div>
+                          ) : (
+                            <div className='w-14 h-10 shrink-0 flex items-center justify-center rounded-md bg-[var(--heo-color-card-muted)] text-gray-400'>
+                              <i className='fas fa-file-lines' />
+                            </div>
+                          )}
+                          <div className='flex-1 min-w-0'>
+                            <div className='text-sm font-medium dark:text-gray-200 truncate'>
+                              {post.title}
+                            </div>
+                            <div className='text-xs text-gray-500 dark:text-gray-400'>
+                              {post.publishDay || post.date?.start_date || ''}
+                            </div>
+                          </div>
+                          <i className='fas fa-arrow-right text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity shrink-0' />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* 查看更多 */}
+                  <div className='mt-4 pt-3 border-t border-[var(--heo-color-border)] dark:border-gray-700 flex items-center justify-center gap-2 text-sm text-[var(--heo-color-primary)] opacity-0 group-hover:opacity-100 transition-opacity'>
+                    <span>查看全部 {category.count} 篇文章</span>
+                    <i className='fas fa-arrow-right' />
+                  </div>
                 </div>
-              </div>
-            </SmartLink>
-          )
-        })}
-      </div>
+              </SmartLink>
+            )
+          })}
+        </div>
+      ) : (
+        <div className='text-center text-gray-500 dark:text-gray-400 py-20'>
+          暂无分类
+        </div>
+      )}
     </div>
   )
 }
