@@ -6,7 +6,6 @@ import Catalog from './Catalog'
 import { InfoCard } from './InfoCard'
 import LatestPostsGroupMini from './LatestPostsGroupMini'
 import TagGroups from './TagGroups'
-import TouchMeCard from './TouchMeCard'
 
 const FaceBookPage = dynamic(
   () => {
@@ -43,11 +42,6 @@ export default function SideRight(props) {
             <Catalog toc={post.toc} />
           </Card>
         )}
-
-        {/* 联系交流群 */}
-        <div className='wow fadeInUp'>
-          <TouchMeCard />
-        </div>
 
         {/* 最新文章列表 */}
         <div
