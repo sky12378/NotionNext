@@ -33,8 +33,8 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
       <div
         data-wow-delay='.2s'
         className={
-          (POST_TWO_COLS ? '2xl:h-72 2xl:flex-col' : '') +
-          ' wow fadeInUp border bg-[var(--heo-color-card)] dark:bg-[var(--heo-color-card-dark)] flex mb-4 flex-col h-[19rem] md:h-44 md:flex-row  group w-full dark:border-gray-600 hover:border-[var(--heo-color-border)] dark:hover:border-[var(--heo-color-border-dark)] duration-300 transition-colors justify-between overflow-hidden rounded-xl'
+          (POST_TWO_COLS ? '2xl:h-36 2xl:flex-col' : '') +
+          ' wow fadeInUp border bg-[var(--heo-color-card)] dark:bg-[var(--heo-color-card-dark)] flex mb-4 flex-col h-[9.5rem] md:h-[5.5rem] md:flex-row  group w-full dark:border-gray-600 hover:border-[var(--heo-color-border)] dark:hover:border-[var(--heo-color-border-dark)] duration-300 transition-colors justify-between overflow-hidden rounded-xl'
         }>
         {/* 图片封面 */}
         {showPageCover && (
@@ -42,7 +42,7 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
             <div
               className={
                 (POST_TWO_COLS ? ' 2xl:w-full' : '') +
-                ' w-full md:w-4/12 overflow-hidden cursor-pointer select-none'
+                ' w-full md:w-3/12 overflow-hidden cursor-pointer select-none'
               }>
               <LazyImage
                 priority={index === 0}
@@ -57,8 +57,8 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
         {/* 文字区块 */}
         <div
           className={
-            (POST_TWO_COLS ? '2xl:p-3 2xl:h-40 2xl:w-full' : '') +
-            ' flex p-4 flex-col justify-between h-40 md:h-full w-full md:w-8/12'
+            (POST_TWO_COLS ? '2xl:p-2 2xl:h-24 2xl:w-full' : '') +
+            ' flex p-2 flex-col justify-between h-20 md:h-full w-full md:w-9/12'
           }>
           <header>
             {/* 分类 */}
@@ -79,7 +79,7 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
               href={post?.href}
               passHref
               className={
-                ' group-hover:text-[var(--heo-color-primary)] dark:hover:text-[var(--heo-color-accent)] dark:group-hover:text-[var(--heo-color-accent)] text-black dark:text-gray-100  line-clamp-2 replace cursor-pointer text-lg font-extrabold leading-tight'
+                ' group-hover:text-[var(--heo-color-primary)] dark:hover:text-[var(--heo-color-accent)] dark:group-hover:text-[var(--heo-color-accent)] text-black dark:text-gray-100  line-clamp-2 replace cursor-pointer text-sm font-extrabold leading-tight'
               }>
               {siteConfig('POST_TITLE_ICON') && (
                 <NotionIcon
@@ -93,7 +93,7 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
 
           {/* 摘要 */}
           {(!showPreview || showSummary) && (
-            <main className='line-clamp-2 replace text-gray-700  dark:text-gray-300 text-sm font-light leading-tight'>
+            <main className='line-clamp-2 replace text-gray-700  dark:text-gray-300 text-xs font-light leading-tight'>
               {post.summary}
             </main>
           )}
