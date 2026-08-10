@@ -33,8 +33,8 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
       <div
         data-wow-delay='.2s'
         className={
-          (POST_TWO_COLS ? '2xl:h-96 2xl:flex-col' : '') +
-          ' wow fadeInUp border bg-[var(--heo-color-card)] dark:bg-[var(--heo-color-card-dark)] flex mb-4 flex-col h-[23rem] md:h-52 md:flex-row  group w-full dark:border-gray-600 hover:border-[var(--heo-color-border)] dark:hover:border-[var(--heo-color-border-dark)] duration-300 transition-colors justify-between overflow-hidden rounded-xl'
+          (POST_TWO_COLS ? '2xl:h-72 2xl:flex-col' : '') +
+          ' wow fadeInUp border bg-[var(--heo-color-card)] dark:bg-[var(--heo-color-card-dark)] flex mb-4 flex-col h-[19rem] md:h-44 md:flex-row  group w-full dark:border-gray-600 hover:border-[var(--heo-color-border)] dark:hover:border-[var(--heo-color-border-dark)] duration-300 transition-colors justify-between overflow-hidden rounded-xl'
         }>
         {/* 图片封面 */}
         {showPageCover && (
@@ -42,7 +42,7 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
             <div
               className={
                 (POST_TWO_COLS ? ' 2xl:w-full' : '') +
-                ' w-full md:w-5/12 overflow-hidden cursor-pointer select-none'
+                ' w-full md:w-4/12 overflow-hidden cursor-pointer select-none'
               }>
               <LazyImage
                 priority={index === 0}
@@ -57,8 +57,8 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
         {/* 文字区块 */}
         <div
           className={
-            (POST_TWO_COLS ? '2xl:p-4 2xl:h-48 2xl:w-full' : '') +
-            ' flex p-6  flex-col justify-between h-48 md:h-full w-full md:w-7/12'
+            (POST_TWO_COLS ? '2xl:p-3 2xl:h-40 2xl:w-full' : '') +
+            ' flex p-4 flex-col justify-between h-40 md:h-full w-full md:w-8/12'
           }>
           <header>
             {/* 分类 */}
@@ -79,7 +79,7 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
               href={post?.href}
               passHref
               className={
-                ' group-hover:text-[var(--heo-color-primary)] dark:hover:text-[var(--heo-color-accent)] dark:group-hover:text-[var(--heo-color-accent)] text-black dark:text-gray-100  line-clamp-2 replace cursor-pointer text-xl font-extrabold leading-tight'
+                ' group-hover:text-[var(--heo-color-primary)] dark:hover:text-[var(--heo-color-accent)] dark:group-hover:text-[var(--heo-color-accent)] text-black dark:text-gray-100  line-clamp-2 replace cursor-pointer text-lg font-extrabold leading-tight'
               }>
               {siteConfig('POST_TITLE_ICON') && (
                 <NotionIcon
