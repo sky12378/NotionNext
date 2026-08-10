@@ -1,12 +1,10 @@
-import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
-// import Image from 'next/image'
 import SmartLink from '@/components/SmartLink'
 import { useRouter } from 'next/router'
 
 /**
- * 最新文章列表
+ * 最新文章列表（纯文字版，不加载头图以提升加载速度）
  * @param posts 所有文章数据
  * @param sliceCount 截取展示的数量 默认6
  * @constructor
@@ -28,9 +26,6 @@ export default function LatestPostsGroupMini({ latestPosts, siteInfo }) {
       {latestPosts.map(post => {
         const selected =
           currentPath === `${SUB_PATH}/${post.slug}`
-        const headerImage = post?.pageCoverThumbnail
-          ? post.pageCoverThumbnail
-          : siteInfo?.pageCover
 
         return (
           <SmartLink
@@ -38,22 +33,17 @@ export default function LatestPostsGroupMini({ latestPosts, siteInfo }) {
             title={post.title}
             href={post?.href}
             passHref
-            className={'my-3 flex'}>
-            <div className='w-20 h-14 overflow-hidden relative'>
-              <LazyImage
-                src={`${headerImage}`}
-                className='object-cover w-full h-full rounded-lg'
-              />
-            </div>
+            className={'my-2 flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-[var(--heo-color-card)] dark:hover:bg-[var(--heo-color-card-dark)] transition-colors'}>
+            <i className='fas fa-angle-right text-xs text-[var(--heo-color-primary)] shrink-0' />
             <div
               className={
                 (selected ? ' text-[var(--heo-color-primary)] ' : 'dark:text-gray-200') +
-                ' text-sm overflow-x-hidden hover:text-[var(--heo-color-primary)] px-2 duration-200 w-full rounded ' +
+                ' text-sm overflow-x-hidden hover:text-[var(--heo-color-primary)] duration-200 w-full rounded ' +
                 ' dark:hover:text-[var(--heo-color-accent)] cursor-pointer items-center flex'
               }>
               <div>
                 <div className='line-clamp-2 menu-link'>{post.title}</div>
-                <div className='text-gray-400'>{post.lastEditedDay}</div>
+                <div className='text-gray-400 text-xs'>{post.lastEditedDay}</div>
               </div>
             </div>
           </SmartLink>

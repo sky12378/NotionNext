@@ -507,34 +507,22 @@ const LayoutCategoryIndex = props => {
                     </div>
                   </div>
 
-                  {/* 最新文章预览 */}
+                  {/* 最新文章预览（纯文字，不加载头图以提速） */}
                   {category.posts?.length > 0 && (
-                    <div className='space-y-2.5'>
+                    <div className='space-y-1'>
                       {category.posts.map(post => (
                         <div
                           key={post.id}
-                          className='flex items-center gap-3 rounded-lg p-2 -mx-2 hover:bg-[var(--heo-color-card)] dark:hover:bg-[var(--heo-color-card-dark)] transition-colors'>
-                          {post.pageCoverThumbnail ? (
-                            <div className='w-14 h-10 shrink-0 overflow-hidden rounded-md'>
-                              <LazyImage
-                                src={post.pageCoverThumbnail}
-                                className='object-cover w-full h-full'
-                              />
-                            </div>
-                          ) : (
-                            <div className='w-14 h-10 shrink-0 flex items-center justify-center rounded-md bg-[var(--heo-color-card-muted)] text-gray-400'>
-                              <i className='fas fa-file-lines' />
-                            </div>
-                          )}
+                          className='flex items-center gap-2 rounded-lg px-2 py-1.5 -mx-2 hover:bg-[var(--heo-color-card)] dark:hover:bg-[var(--heo-color-card-dark)] transition-colors'>
+                          <i className='fas fa-angle-right text-xs text-[var(--heo-color-primary)] shrink-0' />
                           <div className='flex-1 min-w-0'>
-                            <div className='text-sm font-medium dark:text-gray-200 truncate'>
+                            <span className='text-sm font-medium dark:text-gray-200 truncate block'>
                               {post.title}
-                            </div>
-                            <div className='text-xs text-gray-500 dark:text-gray-400'>
-                              {post.publishDay || post.date?.start_date || ''}
-                            </div>
+                            </span>
                           </div>
-                          <i className='fas fa-arrow-right text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity shrink-0' />
+                          <span className='text-xs text-gray-500 dark:text-gray-400 shrink-0'>
+                            {post.publishDay || post.date?.start_date || ''}
+                          </span>
                         </div>
                       ))}
                     </div>
