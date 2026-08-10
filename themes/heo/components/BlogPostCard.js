@@ -33,8 +33,8 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
       <div
         data-wow-delay='.2s'
         className={
-          (POST_TWO_COLS ? '2xl:h-44 2xl:flex-col' : '') +
-          ' wow fadeInUp border bg-[var(--heo-color-card)] dark:bg-[var(--heo-color-card-dark)] flex mb-4 flex-col h-[11rem] md:h-28 md:flex-row  group w-full dark:border-gray-600 hover:border-[var(--heo-color-border)] dark:hover:border-[var(--heo-color-border-dark)] duration-300 transition-colors justify-between overflow-hidden rounded-xl'
+          (POST_TWO_COLS ? '2xl:h-48 2xl:flex-col' : '') +
+          ' wow fadeInUp border bg-[var(--heo-color-card)] dark:bg-[var(--heo-color-card-dark)] flex mb-4 flex-col h-[12rem] md:h-32 md:flex-row  group w-full dark:border-gray-600 hover:border-[var(--heo-color-border)] dark:hover:border-[var(--heo-color-border-dark)] duration-300 transition-colors justify-between overflow-hidden rounded-xl'
         }>
         {/* 图片封面 */}
         {showPageCover && (
@@ -57,8 +57,8 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
         {/* 文字区块 */}
         <div
           className={
-            (POST_TWO_COLS ? '2xl:p-3 2xl:h-28 2xl:w-full' : '') +
-            ' flex p-3 flex-col justify-between h-24 md:h-full w-full md:w-9/12'
+            (POST_TWO_COLS ? '2xl:p-3 2xl:h-32 2xl:w-full' : '') +
+            ' flex p-3 flex-col justify-between h-28 md:h-full w-full md:w-9/12'
           }>
           <header>
             {/* 分类 */}
